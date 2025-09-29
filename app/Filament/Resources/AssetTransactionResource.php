@@ -20,6 +20,7 @@ class AssetTransactionResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-arrow-path-rounded-square';
     protected static ?string $navigationLabel = 'Transaksi Asset';
     protected static ?string $navigationGroup = 'Asset Management';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {

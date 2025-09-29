@@ -23,6 +23,8 @@ class AssetMaintenanceResource extends Resource
 
         protected static ?string $navigationGroup = 'Asset Management';
 
+        protected static ?int $navigationSort = 3;
+
 
     public static function form(Form $form): Form
     {

@@ -21,6 +21,8 @@ class ConsumableTransactionResource extends Resource
 
     protected static ?string $navigationGroup = 'Inventory Management';
 
+    protected static ?int $navigationSort = 12;
+
     public static function form(Form $form): Form
     {
         return $form

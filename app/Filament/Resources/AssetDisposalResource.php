@@ -21,6 +21,8 @@ class AssetDisposalResource extends Resource
 
     protected static ?string $navigationGroup = 'Asset Management';
 
+    protected static ?int $navigationSort = 5;
+
     public static function form(Form $form): Form
     {
         return $form

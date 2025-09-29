@@ -23,6 +23,8 @@ class ConsumableItemResource extends Resource
 
  protected static ?string $navigationLabel = 'Item Habis Pakai';
 
+ protected static ?int $navigationSort = 11;
+
     public static function form(Form $form): Form
     {
         return $form

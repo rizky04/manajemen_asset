@@ -20,6 +20,7 @@ class AssetAuditResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
     protected static ?string $navigationGroup = 'Asset Management';
     protected static ?string $navigationLabel = 'Audit Asset';
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {

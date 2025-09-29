@@ -14,10 +14,23 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Actions\Action;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Filament\Tables\Actions\BulkAction;
+use Illuminate\Support\Collection;
 
 class AssetResource extends Resource
 {
     protected static ?string $model = Asset::class;
+
+     public static function getHeaderActions(): array
+    {
+        return [
+            Action::make('print_qr')
+                ->label('Print QR Semua')
+                ->icon('heroicon-o-printer')
+                ->url(route('assets.qr.print'))
+                ->openUrlInNewTab(),
+        ];
+    }
 
     protected static ?string $navigationIcon = 'heroicon-o-archive-box';
 
@@ -187,19 +200,28 @@ class AssetResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+                BulkAction::make('print_qr')
+                ->label('Print QR')
+                ->icon('heroicon-o-qr-code')
+                ->action(function (Collection $records, $livewire) {
+                    // ambil id yang dipilih
+                    $ids = $records->pluck('id')->toArray();
+
+                    // redirect ke route print
+                    return redirect()->route('assets.qr.bulk', [
+                        'ids' => implode(',', $ids),
+                    ]);
+                }),
+            ])->headerActions([
+            Action::make('print_qr_all')
+                ->label('Print Semua QR')
+                ->icon('heroicon-o-printer')
+                ->url(route('assets.qr.all'))
+                ->openUrlInNewTab(),
+        ]);
     }
 
-    public static function getHeaderActions(): array
-{
-    return [
-        Action::make('print_qr')
-            ->label('Print QR Semua')
-            ->icon('heroicon-o-printer')
-            ->url(route('assets.qr.print'))
-            ->openUrlInNewTab(),
-    ];
-}
+
 
     public static function getRelations(): array
     {

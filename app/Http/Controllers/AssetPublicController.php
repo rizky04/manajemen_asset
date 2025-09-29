@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asset;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AssetPublicController extends Controller
 {
@@ -41,6 +42,22 @@ class AssetPublicController extends Controller
         return view('assets.public-show', compact('asset'));
     }
 
+
+public function bulkPrint($ids)
+{
+    $ids = explode(',', $ids);
+
+    $assets = Asset::whereIn('id', $ids)->get();
+
+    return view('assets.qr-bulk', compact('assets'));
+}
+
+public function printAll()
+{
+    $assets = Asset::all();
+
+    return view('assets.qr-all', compact('assets'));
+}
     /**
      * Show the form for editing the specified resource.
      */

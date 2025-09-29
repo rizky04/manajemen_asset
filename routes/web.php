@@ -13,3 +13,9 @@ Route::get('/assets/{asset}', [AssetPublicController::class, 'show'])
 
     Route::get('/assets/qr/print', [AssetQRController::class, 'printAll'])
     ->name('assets.qr.print');
+
+    Route::get('/assets/qr/bulk/{ids}', [AssetPublicController::class, 'bulkPrint'])
+    ->name('assets.qr.bulk');
+
+    Route::get('/assets/qr/all', [AssetPublicController::class, 'printAll'])
+    ->name('assets.qr.all');

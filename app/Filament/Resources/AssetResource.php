@@ -118,7 +118,32 @@ class AssetResource extends Resource
                     ->maxLength(255),
                 Forms\Components\RichEditor::make('notes')
                     ->columnSpan('full')
-                    ->nullable(),
+                    ->nullable()
+                    ->default("
+1. 1 (satu) Buah Laptop, dengan data spesifikasi sebagai berikut : <br>
+a. Merek : Dell <br>
+b. Type : Latitude 5290 <br>
+c. Serial Number : 9TXPJR2 <br>
+d. Processor : CORE I5-8250U <br>
+e. Storage : SSD 512 GB <br>
+f. RAM : 4 GB <br>
+g. Ukuran Layar : 14 INC <br>
+h. Sistem Operasi : Win 11 Home SL <br>
+i. Office : MS. Office 365 Business <br><br>
+
+2. Software Terinstall, antara lain : <br>
+a. Avast Free Antivirus <br>
+b. Google Chrome <br>
+c. Anydesk <br>
+d. Microsoft Edge <br>
+e. Office 365 Bussiness <br>
+f. Tight VNC <br><br>
+
+3. Kelengkapan tambahan, antara lain : <br>
+a. Charger <br>
+b. Tas <br>
+c. - <br>
+"),
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->columnSpan('full')

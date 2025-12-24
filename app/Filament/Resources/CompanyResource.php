@@ -26,10 +26,15 @@ class CompanyResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('code')
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('name')
-                    ->required()
+                    ->maxLength(255),
+                    Forms\Components\TextInput::make('name_short')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('address')
+                    ->maxLength(255),
+                    Forms\Components\TextInput::make('npwp')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('phone')
                     ->tel()
@@ -44,9 +49,15 @@ class CompanyResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('code')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                    Tables\Columns\TextColumn::make('name_short')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('address')
+                    ->searchable(),
+                    Tables\Columns\TextColumn::make('npwp')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable(),

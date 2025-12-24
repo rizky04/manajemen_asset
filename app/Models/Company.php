@@ -2,11 +2,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Phiki\Adapters\Laravel\Components\Code;
 
 class Company extends Model
 {
     protected $fillable = [
-        'name', 'address', 'phone', 'email'
+        'code', 'name', 'name_short', 'address', 'npwp', 'phone', 'email'
     ];
 
     public function departments()

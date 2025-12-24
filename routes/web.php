@@ -3,6 +3,11 @@
 use App\Http\Controllers\AssetPublicController;
 use App\Http\Controllers\AssetQRController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeeImportController;
+
+Route::post('/employee/import/preview', [EmployeeImportController::class, 'preview'])->name('employee.import.preview');
+Route::post('/employee/import/confirm', [EmployeeImportController::class, 'confirm'])->name('employee.import.confirm');
+
 
 Route::get('/', function () {
     return view('welcome');
